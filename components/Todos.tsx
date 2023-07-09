@@ -1,6 +1,7 @@
 import store from "@/stores/DataStore";
+import { observer } from "mobx-react-lite";
 
-export default function Todos() {
+function Todos() {
   return (
     <div>
       <div>
@@ -15,3 +16,5 @@ export default function Todos() {
     </div>
   );
 }
+
+export default observer(Todos);
