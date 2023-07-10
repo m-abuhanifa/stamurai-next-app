@@ -22,7 +22,7 @@ class Store {
   todos: Todo[] = [];
   newTodo: string = "";
   newDescription: string = "";
-  status: Status = "In Progress";
+  status: Status = "In_Progress";
 
   constructor() {
     makeAutoObservable(this);
