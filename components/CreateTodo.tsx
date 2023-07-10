@@ -39,6 +39,7 @@ function CreateTodo() {
         <input
           type="text"
           placeholder="title"
+          value={title}
           onChange={(e) => setTitle(e.target.value)}
           className="px-3 py-2 border-2 border-gray-300 rounded-md bg-gray-300 placeholder:text-gray-500"
         />
@@ -47,12 +48,14 @@ function CreateTodo() {
           placeholder="description"
           onChange={(e) => setDescription(e.target.value)}
           className="px-3 py-2 border-2 border-gray-300 rounded-md bg-gray-300 placeholder:text-gray-500"
+          value={description}
         />
         <select
           name="status"
           id="select"
           className="px-3 py-2 border-2 border-gray-300 rounded-md bg-gray-300 placeholder:text-gray-500"
           onChange={(e) => setStatus(e.target.value as Status)}
+          value={status}
         >
           {options.map((option) => (
             <option key={option.value} value={option.value}>

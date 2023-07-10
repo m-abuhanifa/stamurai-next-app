@@ -38,6 +38,9 @@ class Store {
     this.newTodo = "";
     this.newDescription = "";
   }
+  removeTodo(id: number) {
+    this.todos = removeTodo(this.todos, id);
+  }
 }
 
 const store = new Store();
