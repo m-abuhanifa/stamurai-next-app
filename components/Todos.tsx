@@ -6,10 +6,13 @@ function Todos() {
     <div>
       <div>
         {store.todos.map((todo, index) => (
-          <div key={index}>
-            <h1>{todo.title}</h1>
-            <h1>{todo.description}</h1>
-            <h1>{todo.status}</h1>
+          <div
+            key={index}
+            className="flex gap-x-5 my-3 p-2 border rounded w-[700px] mx-auto"
+          >
+            <h1>Title : {todo.title}</h1>
+            <h1>Description : {todo.description}</h1>
+            <h1>Status : {todo.status}</h1>
           </div>
         ))}
       </div>
