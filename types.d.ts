@@ -1,4 +1,4 @@
-type Status = "To Do" | "In Progress" | "Completed";
+type Status = "To_Do" | "In_Progress" | "Completed";
 
 type Todo = {
   id: number;

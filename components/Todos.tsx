@@ -13,11 +13,11 @@ function Todos() {
   const options = [
     {
       text: "In Progress",
-      value: "In Progress",
+      value: "In_Progress",
     },
     {
       text: "To Do",
-      value: "To Do",
+      value: "To_Do",
     },
     {
       text: "Completed",
