@@ -24,6 +24,7 @@ export default function Todo({ todo }: { todo: Todo }) {
       value: "Completed",
     },
   ];
+
   const updateTodo = async () => {
     if (title.trim() === "" || description.trim() === "") {
       alert("Please fill all the fields");
@@ -62,6 +63,7 @@ export default function Todo({ todo }: { todo: Todo }) {
     const data = await res.json();
     store.removeTodo(data.todo.id);
   };
+
   return (
     <div className="md:flex gap-x-5 my-3 px-5 py-3 border rounded-lg justify-evenly xl:mx-40 shad">
       <div className="my-3">
