@@ -25,6 +25,24 @@ export default async function handler(
       res.status(400).json({ message: "Bad Request from post" });
     }
   }
+
+  if (req.method === "PATCH") {
+    try {
+      const todo = await prisma.todo.update({
+        where: {
+          id: req.body.id,
+        },
+        data: {
+          title: req.body.title,
+          description: req.body.description,
+        },
+      });
+      res.status(200).json({ todo });
+    } catch (error) {
+      res.status(400).json({ message: "Bad Request" });
+    }
+  }
+
   if (req.method === "DELETE") {
     try {
       const todo = await prisma.todo.delete({
