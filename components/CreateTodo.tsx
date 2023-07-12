@@ -54,19 +54,19 @@ function CreateTodo() {
 
   return (
     <section className="flex justify-center items-center my-5">
-      <div className="flex justify-around items-center gap-x-5">
+      <div className="flex flex-col gap-y-5 md:flex-row justify-around items-center gap-x-5">
         <input
           type="text"
-          placeholder="title"
+          placeholder="Title"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
-          className="px-3 py-2 border-2 border-gray-300 rounded-md bg-gray-300 placeholder:text-gray-500"
+          className="px-3 py-2 border-2 border-gray-300 rounded-md bg-gray-300 placeholder:text-gray-500 w-80  md:w-60 lg:w-80 "
         />
         <input
           type="text"
-          placeholder="description"
+          placeholder="Description"
           onChange={(e) => setDescription(e.target.value)}
-          className="px-3 py-2 border-2 border-gray-300 rounded-md bg-gray-300 placeholder:text-gray-500"
+          className="px-3 py-2 border-2 border-gray-300 rounded-md bg-gray-300 placeholder:text-gray-500 w-80  md:w-60 lg:w-80  "
           value={description}
         />
         <select
