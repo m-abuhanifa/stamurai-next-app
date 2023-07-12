@@ -1,11 +1,22 @@
 import store from "@/stores/DataStore";
 import { observer } from "mobx-react-lite";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { BiSave } from "react-icons/bi";
 import { BsTrash } from "react-icons/bs";
 import { LuEdit } from "react-icons/lu";
 
 function Todos() {
+  useEffect(() => {
+    const getTodos = async () => {
+      const response = await fetch("http://localhost:3000/api/todos");
+      const data = await response.json();
+
+      store.todos = data.todos;
+    };
+
+    getTodos();
+  }, []);
+
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [status, setStatus] = useState("In_Progress" as Status);
