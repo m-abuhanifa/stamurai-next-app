@@ -9,7 +9,10 @@ export default function cors(
     "Access-Control-Allow-Origin",
     "https://stamurai-next-app.vercel.app"
   );
-  res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
+  res.setHeader(
+    "Access-Control-Allow-Methods",
+    "GET, POST,PATCH,DELETE, OPTIONS"
+  );
   res.setHeader("Access-Control-Allow-Headers", "Content-Type");
 
   if (req.method === "OPTIONS") {
