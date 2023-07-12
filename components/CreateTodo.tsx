@@ -38,16 +38,20 @@ function CreateTodo() {
         status,
       }),
     });
+    const data = await res.json();
 
-    console.log(await res.json());
+    console.log(data.todo.id);
 
-    store.newTodo = title;
-    store.newDescription = description;
-    store.status = status;
-    store.addTodo();
-    setTitle("");
-    setDescription("");
-    setStatus("In_Progress" as Status);
+    if (data.todo.id) {
+      store.id = data.todo.id;
+      store.newTodo = title;
+      store.newDescription = description;
+      store.status = status;
+      store.addTodo();
+      setTitle("");
+      setDescription("");
+      setStatus("In_Progress" as Status);
+    }
   };
 
   return (

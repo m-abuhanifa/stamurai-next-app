@@ -17,7 +17,7 @@ function Todos() {
   return (
     <div>
       {store.todos &&
-        store.todos.map((todo, index) => <Todo todo={todo} key={index} />)}
+        store.todos.map((todo) => <Todo todo={todo} key={todo.id} />)}
     </div>
   );
 }

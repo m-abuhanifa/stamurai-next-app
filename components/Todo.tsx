@@ -37,23 +37,27 @@ export default function Todo({ todo }: { todo: Todo }) {
         status: status,
       }),
     });
-
-    console.log(await res.json());
-    store.newTodo = title;
-    store.newDescription = description;
-    store.status = status;
-    setEdit((m) => !m);
+    const data = await res.json();
+    console.log(data.todo.id);
+    if (data.todo.id) {
+      store.id = data.todo.id;
+      store.newTodo = title;
+      store.newDescription = description;
+      store.status = status;
+      setEdit((m) => !m);
+    }
   };
 
   const deleteTodo = async (id: number) => {
-    store.removeTodo(id);
     const res = await fetch(`http://localhost:3000/api/todos`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ id }),
+      body: JSON.stringify({ id: id }),
     });
+    const data = await res.json();
+    store.removeTodo(data.todo.id);
   };
   return (
     <div className="md:flex gap-x-5 my-3 p-2 border rounded justify-evenly xl:mx-40">

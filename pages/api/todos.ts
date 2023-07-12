@@ -21,6 +21,7 @@ export default async function handler(
         },
       });
       res.status(200).json({ todo });
+      return;
     } catch (error) {
       res.status(400).json({ message: "Bad Request from post" });
     }
@@ -39,6 +40,7 @@ export default async function handler(
         },
       });
       res.status(200).json({ todo });
+      return;
     } catch (error) {
       res.status(400).json({ message: "Bad Request" });
     }
@@ -52,6 +54,7 @@ export default async function handler(
         },
       });
       res.status(200).json({ todo });
+      return;
     } catch (error) {
       res.status(400).json({ message: "Bad Request" });
     }

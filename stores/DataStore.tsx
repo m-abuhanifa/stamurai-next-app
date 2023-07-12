@@ -4,6 +4,7 @@ const removeTodo = (todos: Todo[], id: number): Todo[] =>
   todos.filter((todo) => todo.id !== id);
 
 const addTodo = (
+  id: number,
   todos: Todo[],
   title: string,
   description: string,
@@ -11,7 +12,7 @@ const addTodo = (
 ): Todo[] => [
   ...todos,
   {
-    id: Math.max(0, Math.max(...todos.map(({ id }) => id))) + 1,
+    id: id,
     title,
     description,
     status,
@@ -19,6 +20,7 @@ const addTodo = (
 ];
 
 class Store {
+  id: number = 0;
   todos: Todo[] = [];
   newTodo: string = "";
   newDescription: string = "";
@@ -30,6 +32,7 @@ class Store {
 
   addTodo() {
     this.todos = addTodo(
+      this.id,
       this.todos,
       this.newTodo,
       this.newDescription,
