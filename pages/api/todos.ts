@@ -5,6 +5,7 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
+  console.log(req.body, req.method);
   if (req.method === "GET") {
     const todos = await prisma.todo.findMany();
     res.status(200).json({ todos });
@@ -21,7 +22,7 @@ export default async function handler(
       });
       res.status(200).json({ todo });
     } catch (error) {
-      res.status(400).json({ message: "Bad Request" });
+      res.status(400).json({ message: "Bad Request from post" });
     }
   }
 

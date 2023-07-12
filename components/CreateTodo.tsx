@@ -6,6 +6,7 @@ function CreateTodo() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [status, setStatus] = useState("In Progress" as Status);
+
   const options = [
     {
       text: "In_Progress",
@@ -20,11 +21,26 @@ function CreateTodo() {
       value: "Completed",
     },
   ];
+
   const createTodo = async () => {
     if (title.trim() === "" || description.trim() === "") {
       alert("Please fill all the fields");
       return;
     }
+    const res = await fetch("http://localhost:3000/api/todos", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        title,
+        description,
+        status,
+      }),
+    });
+
+    console.log(await res.json());
+
     store.newTodo = title;
     store.newDescription = description;
     store.status = status;
@@ -33,6 +49,7 @@ function CreateTodo() {
     setDescription("");
     setStatus("In_Progress" as Status);
   };
+
   return (
     <section className="flex justify-center items-center my-5">
       <div className="flex justify-around items-center gap-x-5">
