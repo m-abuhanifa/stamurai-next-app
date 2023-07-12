@@ -3,13 +3,10 @@ import Todos from "./Todos";
 
 export default function All() {
   return (
-    <div>
-      <div>
-        <CreateTodo />
-      </div>
-      <div>
-        <Todos />
-      </div>
+    <div className="my-5">
+      <CreateTodo />
+
+      <Todos />
     </div>
   );
 }

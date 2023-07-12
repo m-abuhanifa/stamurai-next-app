@@ -1,12 +1,11 @@
 import All from "@/components/All";
-import { Inter } from "next/font/google";
 
-const inter = Inter({ subsets: ["latin"] });
-
-export default function Home() {
+function Home() {
   return (
-    <main className="m-10">
+    <div className="p-5">
       <All />
-    </main>
+    </div>
   );
 }
+
+export default Home;

@@ -8,15 +8,16 @@ import { LuEdit } from "react-icons/lu";
 function Todos() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [status, setStatus] = useState("In Progress" as Status);
+  const [status, setStatus] = useState("In_Progress" as Status);
   const [edit, setEdit] = useState(false);
+
   const options = [
     {
-      text: "In Progress",
+      text: "In_Progress",
       value: "In_Progress",
     },
     {
-      text: "To Do",
+      text: "To_Do",
       value: "To_Do",
     },
     {
@@ -25,43 +26,57 @@ function Todos() {
     },
   ];
   const updateTodo = () => {
-    if (title.trim() === "" || description.trim() === "") {
-      alert("Please fill all the fields");
-      return;
-    }
     store.newTodo = title;
     store.newDescription = description;
     store.status = status;
     setEdit((m) => !m);
   };
+
   return (
-    <div>
-      <div>
-        {store.todos.map((todo, index) => (
+    <>
+      {store.todos &&
+        store.todos.map((todo, index) => (
           <div
             key={index}
-            className="flex gap-x-5 my-3 p-2 border rounded w-[700px] mx-auto"
+            className="md:flex gap-x-5 my-3 p-2 border rounded justify-evenly xl:mx-40"
           >
-            <input
-              type="text"
-              placeholder="title"
-              defaultValue={todo.title}
-              onChange={(e) => setTitle(e.target.value)}
-              className="px-3 py-2 border-2 border-gray-300 rounded-md bg-gray-300 placeholder:text-gray-500"
-              disabled={!edit}
-            />
-            <input
-              type="text"
-              placeholder="description"
-              onChange={(e) => setDescription(e.target.value)}
-              className="px-3 py-2 border-2 border-gray-300 rounded-md bg-gray-300 placeholder:text-gray-500"
-              defaultValue={todo.description}
-              disabled={!edit}
-            />
+            <div>
+              <label htmlFor="title" className="text-sm text-gray-500">
+                Title
+              </label>
+              <input
+                type="text"
+                placeholder="title"
+                defaultValue={todo.title}
+                onChange={(e) => setTitle(e.target.value)}
+                className={`mx-1 px-2 py-2 rounded placeholder:text-gray-500 ${
+                  edit ? "bg-gray-300" : ""
+                }`}
+                disabled={!edit}
+              />
+            </div>
+            <div>
+              <label htmlFor="description" className="text-sm text-gray-500">
+                Description
+              </label>
+              <input
+                type="text"
+                placeholder="description"
+                onChange={(e) => setDescription(e.target.value)}
+                className={`mx-1 px-2 py-2 rounded placeholder:text-gray-500 ${
+                  edit ? "bg-gray-300" : ""
+                }`}
+                defaultValue={todo.description}
+                disabled={!edit}
+              />
+            </div>
+
             <select
               name="status"
               id="select"
-              className="px-3 py-2 border-2 border-gray-300 rounded-md bg-gray-300 placeholder:text-gray-500"
+              className={`mx-1 px-2 py-2 rounded placeholder:text-gray-500 ${
+                edit ? "bg-gray-300" : ""
+              }`}
               onChange={(e) => setStatus(e.target.value as Status)}
               defaultValue={todo.status}
               disabled={!edit}
@@ -92,8 +107,7 @@ function Todos() {
             )}
           </div>
         ))}
-      </div>
-    </div>
+    </>
   );
 }
 

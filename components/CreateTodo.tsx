@@ -8,11 +8,11 @@ function CreateTodo() {
   const [status, setStatus] = useState("In Progress" as Status);
   const options = [
     {
-      text: "In Progress",
+      text: "In_Progress",
       value: "In_Progress",
     },
     {
-      text: "To Do",
+      text: "To_Do",
       value: "To_Do",
     },
     {
@@ -20,7 +20,7 @@ function CreateTodo() {
       value: "Completed",
     },
   ];
-  const createTodo = () => {
+  const createTodo = async () => {
     if (title.trim() === "" || description.trim() === "") {
       alert("Please fill all the fields");
       return;
@@ -31,10 +31,10 @@ function CreateTodo() {
     store.addTodo();
     setTitle("");
     setDescription("");
-    setStatus("In Progress" as Status);
+    setStatus("In_Progress" as Status);
   };
   return (
-    <div className="flex justify-center items-center gap-x-5">
+    <section className="flex justify-center items-center my-5">
       <div className="flex justify-around items-center gap-x-5">
         <input
           type="text"
@@ -70,7 +70,7 @@ function CreateTodo() {
           Add Todo
         </button>
       </div>
-    </div>
+    </section>
   );
 }
 
