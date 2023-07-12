@@ -65,7 +65,7 @@ export default function Todo({ todo }: { todo: Todo }) {
   };
 
   return (
-    <div className="md:flex gap-x-5 my-3 px-5 py-3 border rounded-lg justify-evenly xl:mx-40 shad">
+    <div className="md:flex gap-x-5 my-3 px-5 py-3 border rounded-lg md:justify-evenly 2xl:mx-40 shad">
       <div className="my-3">
         <label htmlFor="title" className="text-sm text-gray-500">
           Title
@@ -75,7 +75,7 @@ export default function Todo({ todo }: { todo: Todo }) {
           placeholder="title"
           defaultValue={todo.title}
           onChange={(e) => setTitle(e.target.value)}
-          className={`mx-1 px-2 py-2 rounded placeholder:text-gray-500 font-bold ${
+          className={`sm:w-64 lg:w-96 mx-1 px-2 py-2 rounded placeholder:text-gray-500 font-bold ${
             edit ? "bg-gray-300" : ""
           }`}
           disabled={!edit}
@@ -89,7 +89,7 @@ export default function Todo({ todo }: { todo: Todo }) {
           type="text"
           placeholder="description"
           onChange={(e) => setDescription(e.target.value)}
-          className={`mx-1 px-2 py-2 rounded placeholder:text-gray-500 font-bold ${
+          className={`sm:w-64 lg:w-96 mx-1 px-2 py-2 rounded placeholder:text-gray-500 font-bold ${
             edit ? "bg-gray-300" : ""
           }`}
           defaultValue={todo.description}
