@@ -38,7 +38,6 @@ export default function Todo({ todo }: { todo: Todo }) {
       }),
     });
     const data = await res.json();
-    console.log(data.todo.id);
     if (data.todo.id) {
       store.id = data.todo.id;
       store.newTodo = title;

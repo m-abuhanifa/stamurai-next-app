@@ -5,7 +5,6 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  console.log(req.body, req.method);
   if (req.method === "GET") {
     const todos = await prisma.todo.findMany();
     res.status(200).json({ todos });
