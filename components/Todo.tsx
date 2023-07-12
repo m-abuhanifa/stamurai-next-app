@@ -5,8 +5,8 @@ import { BsTrash } from "react-icons/bs";
 import { LuEdit } from "react-icons/lu";
 
 export default function Todo({ todo }: { todo: Todo }) {
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
+  const [title, setTitle] = useState(todo.title);
+  const [description, setDescription] = useState(todo.description);
   const [status, setStatus] = useState("In_Progress" as Status);
   const [edit, setEdit] = useState(false);
 
@@ -25,6 +25,10 @@ export default function Todo({ todo }: { todo: Todo }) {
     },
   ];
   const updateTodo = async () => {
+    if (title.trim() === "" || description.trim() === "") {
+      alert("Please fill all the fields");
+      return;
+    }
     const res = await fetch(`http://localhost:3000/api/todos`, {
       method: "PATCH",
       headers: {
