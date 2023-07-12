@@ -21,10 +21,9 @@ export default async function handler(
           description: req.body.description,
         },
       });
-      res.status(200).json({ todo });
-      return;
+      return res.status(200).json({ todo });
     } catch (error) {
-      res.status(400).json({ message: "Bad Request from post" });
+      return res.status(400).json({ message: "Bad Request from post" });
     }
   }
 
@@ -40,10 +39,9 @@ export default async function handler(
           status: req.body.status,
         },
       });
-      res.status(200).json({ todo });
-      return;
+      return res.status(200).json({ todo });
     } catch (error) {
-      res.status(400).json({ message: "Bad Request" });
+      return res.status(400).json({ message: "Bad Request" });
     }
   }
 
@@ -54,14 +52,13 @@ export default async function handler(
           id: req.body.id,
         },
       });
-      res.status(200).json({ todo });
-      return;
+      return res.status(200).json({ todo });
     } catch (error) {
-      res.status(400).json({ message: "Bad Request" });
+      return res.status(400).json({ message: "Bad Request" });
     }
   }
   // rest
   else {
-    res.status(400).json({ message: "Bad Request" });
+    return res.status(400).json({ message: "Bad Request" });
   }
 }

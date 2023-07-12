@@ -59,8 +59,8 @@ export default function Todo({ todo }: { todo: Todo }) {
     store.removeTodo(data.todo.id);
   };
   return (
-    <div className="md:flex gap-x-5 my-3 p-2 border rounded justify-evenly xl:mx-40">
-      <div>
+    <div className="md:flex gap-x-5 my-3 px-5 py-3 border rounded-lg justify-evenly xl:mx-40 shad">
+      <div className="my-3">
         <label htmlFor="title" className="text-sm text-gray-500">
           Title
         </label>
@@ -69,13 +69,13 @@ export default function Todo({ todo }: { todo: Todo }) {
           placeholder="title"
           defaultValue={todo.title}
           onChange={(e) => setTitle(e.target.value)}
-          className={`mx-1 px-2 py-2 rounded placeholder:text-gray-500 ${
+          className={`mx-1 px-2 py-2 rounded placeholder:text-gray-500 font-bold ${
             edit ? "bg-gray-300" : ""
           }`}
           disabled={!edit}
         />
       </div>
-      <div>
+      <div className="my-3">
         <label htmlFor="description" className="text-sm text-gray-500">
           Description
         </label>
@@ -83,7 +83,7 @@ export default function Todo({ todo }: { todo: Todo }) {
           type="text"
           placeholder="description"
           onChange={(e) => setDescription(e.target.value)}
-          className={`mx-1 px-2 py-2 rounded placeholder:text-gray-500 ${
+          className={`mx-1 px-2 py-2 rounded placeholder:text-gray-500 font-bold ${
             edit ? "bg-gray-300" : ""
           }`}
           defaultValue={todo.description}
@@ -94,7 +94,7 @@ export default function Todo({ todo }: { todo: Todo }) {
       <select
         name="status"
         id="select"
-        className={`mx-1 px-2 py-2 rounded placeholder:text-gray-500 ${
+        className={`mx-1 px-2 py-2 rounded placeholder:text-gray-500 border border-gray-300 my-3${
           edit ? "bg-gray-300" : ""
         }`}
         onChange={(e) => setStatus(e.target.value as Status)}
@@ -108,23 +108,29 @@ export default function Todo({ todo }: { todo: Todo }) {
         ))}
       </select>
 
-      <button onClick={() => deleteTodo(todo.id)}>
-        <BsTrash size={20} className="cursor-pointer text-red-500" />
-      </button>
+      <div className="flex gap-x-20 items-center my-3">
+        <div>
+          <button onClick={() => deleteTodo(todo.id)}>
+            <BsTrash size={20} className="cursor-pointer text-red-500" />
+          </button>
+        </div>
 
-      {edit ? (
-        <button onClick={updateTodo}>
-          <BiSave size={20} className="cursor-pointer text-green-500" />
-        </button>
-      ) : (
-        <button
-          onClick={() => {
-            setEdit((m) => !m);
-          }}
-        >
-          <LuEdit size={20} className="cursor-pointer text-green-500" />
-        </button>
-      )}
+        <div>
+          {edit ? (
+            <button onClick={updateTodo}>
+              <BiSave size={20} className="cursor-pointer text-green-500" />
+            </button>
+          ) : (
+            <button
+              onClick={() => {
+                setEdit((m) => !m);
+              }}
+            >
+              <LuEdit size={20} className="cursor-pointer text-green-500" />
+            </button>
+          )}
+        </div>
+      </div>
     </div>
   );
 }
