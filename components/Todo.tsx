@@ -24,7 +24,21 @@ export default function Todo({ todo }: { todo: Todo }) {
       value: "Completed",
     },
   ];
-  const updateTodo = () => {
+  const updateTodo = async () => {
+    const res = await fetch(`http://localhost:3000/api/todos`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        id: todo.id,
+        title: title,
+        description: description,
+        status: status,
+      }),
+    });
+
+    console.log(await res.json());
     store.newTodo = title;
     store.newDescription = description;
     store.status = status;

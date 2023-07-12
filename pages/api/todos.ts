@@ -35,6 +35,7 @@ export default async function handler(
         data: {
           title: req.body.title,
           description: req.body.description,
+          status: req.body.status,
         },
       });
       res.status(200).json({ todo });
