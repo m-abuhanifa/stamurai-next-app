@@ -31,6 +31,7 @@ function CreateTodo() {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "http://localhost:3000",
       },
       body: JSON.stringify({
         title,

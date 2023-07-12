@@ -6,7 +6,11 @@ import Todo from "./Todo";
 function Todos() {
   useEffect(() => {
     const getTodos = async () => {
-      const response = await fetch("http://localhost:3000/api/todos");
+      const response = await fetch("http://localhost:3000/api/todos", {
+        headers: {
+          "Access-Control-Allow-Origin": "http://localhost:3000",
+        },
+      });
       const data = await response.json();
 
       store.todos = data.todos;
