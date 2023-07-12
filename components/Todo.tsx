@@ -34,7 +34,6 @@ export default function Todo({ todo }: { todo: Todo }) {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "http://localhost:3000",
       },
       body: JSON.stringify({
         id: todo.id,
@@ -58,7 +57,6 @@ export default function Todo({ todo }: { todo: Todo }) {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "http://localhost:3000",
       },
       body: JSON.stringify({ id: id }),
     });
