@@ -36,6 +36,7 @@ function Todos() {
       value: "Completed",
     },
   ];
+
   const updateTodo = () => {
     store.newTodo = title;
     store.newDescription = description;
@@ -43,6 +44,16 @@ function Todos() {
     setEdit((m) => !m);
   };
 
+  const deleteTodo = async (id: number) => {
+    store.removeTodo(id);
+    const res = await fetch(`http://localhost:3000/api/todos`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ id }),
+    });
+  };
   return (
     <>
       {store.todos &&
@@ -99,7 +110,7 @@ function Todos() {
               ))}
             </select>
 
-            <button onClick={() => store.removeTodo(todo.id)}>
+            <button onClick={() => deleteTodo(todo.id)}>
               <BsTrash size={20} className="cursor-pointer text-red-500" />
             </button>
 

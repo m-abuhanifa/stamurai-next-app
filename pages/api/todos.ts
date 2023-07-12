@@ -25,7 +25,18 @@ export default async function handler(
       res.status(400).json({ message: "Bad Request from post" });
     }
   }
-
+  if (req.method === "DELETE") {
+    try {
+      const todo = await prisma.todo.delete({
+        where: {
+          id: req.body.id,
+        },
+      });
+      res.status(200).json({ todo });
+    } catch (error) {
+      res.status(400).json({ message: "Bad Request" });
+    }
+  }
   // rest
   else {
     res.status(400).json({ message: "Bad Request" });
